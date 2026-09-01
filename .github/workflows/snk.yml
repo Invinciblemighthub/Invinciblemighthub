@@ -1,0 +1,67 @@
+# ============================================================
+# 🐍 Platane/snk  贪吃蛇真联动 · GitHub Actions 配置模板
+#    username = invinciblemight
+# ============================================================
+# 1. 本文件放置位置：
+#    👉 invinciblemight/invisiblemight (你的 profile 仓库)
+#       .github/workflows/snk.yml
+#
+# 2. 权限设置（必须！）：
+#    👉 仓库 Settings → Actions → General → Workflow permissions
+#       选 "Read and write permissions" → Save
+#
+# 3. 第一次触发：
+#    👉 Actions → 左侧选中 "Generate Snake SVG" → Run workflow → 绿点通过
+#    👉 完成后 output 分支会出现 dist/github-contribution-grid-snake.svg
+#
+# 4. 之后每天 UTC 00:00 (北京 08:00) 自动刷新一次，无需手动操作
+# ============================================================
+
+name: Generate Snake SVG
+
+on:
+  schedule:
+    # 每天 UTC 00:00 自动跑（北京时间 08:00）
+    - cron: "0 0 * * *"
+  # 允许在 Actions 面板手动点触发
+  workflow_dispatch:
+  # 每次 push 到 main/master 也重跑一次（可选，注释掉也行）
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  generate:
+    name: 🐍 Generate TokyoNight Snake SVG
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: 🐍 Generate github-contribution-grid-snake.svg
+        # 使用 Platane/snk v3 svg-only 模式（比普通模式更快、更稳定）
+        uses: Platane/snk/svg-only@v3
+        with:
+          # 自动读当前仓库 owner（即 invinciblemight）
+          github_user_name: ${{ github.repository_owner }}
+          # 配色：tokyo-night 赛博朋克紫（与 README 统一主题）
+          outputs: |
+            dist/github-contribution-grid-snake.svg
+            dist/github-contribution-grid-snake-dark.svg?palette=tokyo-night
+
+      - name: 🚀 Push snake SVG 到 output 分支
+        uses: crazy-max/ghaction-github-pages@v4
+        with:
+          target_branch: output         # 蛇图会被推到这个独立分支
+          build_dir: dist
+          keep_history: false           # 不保留历史，省空间
+          commit_message: "🐍 chore(snk): auto-update snake svg"
+        env:
+          # GITHUB_TOKEN 由 GitHub 自动注入，无需你在 Secrets 里添加
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+# ============================================================
+# ✅ 完成后，README 引用的真蛇图地址：
+#    https://raw.githubusercontent.com/invinciblemight/invinciblemight/output/github-contribution-grid-snake.svg
+#    （README_H_github_profile.md 里我已经帮你写好这个链接了）
+# ============================================================

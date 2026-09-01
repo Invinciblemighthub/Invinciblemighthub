@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 130" width="470" height="130">
+
+  <defs>
+    <linearGradient id="gradBP" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7AA2F7"/>
+      <stop offset="55%" stop-color="#BB9AF7"/>
+      <stop offset="100%" stop-color="#F7768E"/>
+    </linearGradient>
+    <linearGradient id="gradBC" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7AA2F7"/>
+      <stop offset="100%" stop-color="#7DCFFF"/>
+    </linearGradient>
+    <linearGradient id="gradGB" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#9ECE6A"/>
+      <stop offset="55%" stop-color="#7DCFFF"/>
+      <stop offset="100%" stop-color="#7AA2F7"/>
+    </linearGradient>
+    <linearGradient id="gradPO" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#BB9AF7"/>
+      <stop offset="100%" stop-color="#E0AF68"/>
+    </linearGradient>
+    <linearGradient id="gradBPP" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7AA2F7"/>
+      <stop offset="50%" stop-color="#BB9AF7"/>
+      <stop offset="100%" stop-color="#F7768E"/>
+    </linearGradient>
+    <filter id="glowBP" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softShadow" x="-10%" y="-20%" width="120%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#000000" flood-opacity="0.55"/>
+    </filter>
+  </defs>
+
+<rect width="470" height="130" rx="16" fill="#1A1B26" filter="url(#softShadow)"/>
+<rect x="0" y="0" width="470" height="5" fill="#9ECE6A"/>
+
+<text x="24" y="38" font-family="Fira Code,monospace" font-size="17" font-weight="900" fill="#9ECE6A">📌 Algorithm Competition Template Lib</text>
+<text x="24" y="60" font-family="Fira Code,monospace" font-size="11.5" fill="#A9B1D6">算法竞赛模板库 · C++ / Python / Go 三套代码 · 常用图论 DP 数论</text>
+
+<!-- Tag chips -->
+<g transform="translate(24,76)" font-family="Fira Code,monospace" font-size="10" font-weight="700" fill="#C0CAF5">
+  <rect x="0" y="0" width="78" height="20" rx="10" fill="#16161E" stroke="#9ECE6A" stroke-opacity="0.6"/><text x="39" y="14" text-anchor="middle" fill="#9ECE6A">C++</text><rect x="84" y="0" width="78" height="20" rx="10" fill="#16161E" stroke="#9ECE6A" stroke-opacity="0.6"/><text x="123" y="14" text-anchor="middle" fill="#9ECE6A">Python</text><rect x="168" y="0" width="78" height="20" rx="10" fill="#16161E" stroke="#9ECE6A" stroke-opacity="0.6"/><text x="207" y="14" text-anchor="middle" fill="#9ECE6A">Go</text><rect x="252" y="0" width="78" height="20" rx="10" fill="#16161E" stroke="#9ECE6A" stroke-opacity="0.6"/><text x="291" y="14" text-anchor="middle" fill="#9ECE6A">Templates</text>
+</g>
+
+<!-- Bottom stats -->
+<g transform="translate(24,108)" font-family="Fira Code,monospace" font-size="11" fill="#A9B1D6">
+  <text x="0" y="0" fill="#9ECE6A" font-weight="800">⭐ Growing Stars</text>
+  <text x="130" y="0" fill="#7DCFFF" font-weight="800">🔀 Public Forks</text>
+  <text x="260" y="0">🛡️ MIT Licensed</text>
+  <text x="390" y="0" fill="#9ECE6A" font-weight="700">View on GitHub →</text>
+</g>
+<rect x="0" y="125" width="470" height="5" fill="#9ECE6A"/>
+</svg>
