@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 30" width="980" height="30" font-family="JetBrains Mono, Fira Code, Consolas, Menlo, monospace">
+  <rect x="0" y="0" width="980" height="30" fill="#050A14"/>
+  <line x1="0" y1="1" x2="980" y2="1" stroke="#00E5FF" stroke-width="0.8" opacity="0.7"/>
+  <line x1="0" y1="29" x2="980" y2="29" stroke="#00E5FF" stroke-width="0.8" opacity="0.7"/>
+  <rect x="20" y="8" width="5" height="14" fill="#FF4081"/>
+  <text x="35" y="20" font-size="11" fill="#FF4081">// TECH_STACK_IDENTIFICATION</text>
+  <text x="950" y="20" font-size="11" fill="#00E5FF" text-anchor="end">SCANNING COMPILED DEPENDENCIES...</text>
+  <!-- Sweep overlay -->
+  <rect x="0" y="0" width="980" height="30" fill="#00E5FF" opacity="0.06">
+    <animate attributeName="width" values="0;980;0" dur="3.2s" repeatCount="indefinite"/>
+  </rect>
+</svg>

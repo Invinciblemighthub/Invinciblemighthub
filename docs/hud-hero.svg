@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 260" width="980" height="260" font-family="Orbitron, Rajdhani, JetBrains Mono, Fira Code, Consolas, sans-serif">
+  <defs>
+    <linearGradient id="gc" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#00E5FF" stop-opacity="0.2"/>
+      <stop offset="0.5" stop-color="#00E5FF" stop-opacity="1"/>
+      <stop offset="1" stop-color="#00E5FF" stop-opacity="0.2"/>
+    </linearGradient>
+    <radialGradient id="tr" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0.7" stop-color="#00E5FF" stop-opacity="0"/>
+      <stop offset="0.85" stop-color="#00E5FF" stop-opacity="0.8"/>
+      <stop offset="1" stop-color="#00E5FF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <!-- BG -->
+  <rect x="0" y="0" width="980" height="260" fill="#050A14"/>
+  <!-- Horizontal sweep scan line -->
+  <rect x="0" y="0" width="980" height="2" fill="url(#gc)">
+    <animate attributeName="y" values="0;260;0" dur="5.5s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;0.9;0" dur="5.5s" repeatCount="indefinite"/>
+  </rect>
+  <!-- Corner brackets -->
+  <polyline points="30,40 30,20 60,20" fill="none" stroke="#00E5FF" stroke-width="1.6"/>
+  <polyline points="950,40 950,20 920,20" fill="none" stroke="#00E5FF" stroke-width="1.6"/>
+  <polyline points="30,220 30,240 60,240" fill="none" stroke="#00E5FF" stroke-width="1.6"/>
+  <polyline points="950,220 950,240 920,240" fill="none" stroke="#00E5FF" stroke-width="1.6"/>
+  <!-- Crosshair lock (left) -->
+  <g transform="translate(160,130)">
+    <circle r="70" fill="url(#tr)">
+      <animate attributeName="r" values="68;74;68" dur="4s" repeatCount="indefinite"/>
+    </circle>
+    <circle r="70" fill="none" stroke="#00E5FF" stroke-width="1" stroke-dasharray="4 3" opacity="0.7">
+      <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="22s" repeatCount="indefinite"/>
+    </circle>
+    <circle r="44" fill="none" stroke="#00E5FF" stroke-width="0.8" opacity="0.5"/>
+    <line x1="-84" y1="0" x2="-52" y2="0" stroke="#00E5FF" stroke-width="1.4"/>
+    <line x1="84" y1="0" x2="52" y2="0" stroke="#00E5FF" stroke-width="1.4"/>
+    <line x1="0" y1="-84" x2="0" y2="-52" stroke="#00E5FF" stroke-width="1.4"/>
+    <line x1="0" y1="84" x2="0" y2="52" stroke="#00E5FF" stroke-width="1.4"/>
+    <circle r="3" fill="#FF4081">
+      <animate attributeName="opacity" values="1;0.3;1" dur="1.2s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  <!-- Target lock block (top-right) -->
+  <g font-family="JetBrains Mono, Fira Code, Consolas, Menlo, monospace" font-size="11" fill="#E0F7FA">
+    <rect x="600" y="28" width="356" height="82" fill="none" stroke="#00E5FF" stroke-width="1" opacity="0.85"/>
+    <text x="612" y="48" fill="#FF4081">[ TARGET · LOCKED ✓ ]</text>
+    <text x="612" y="66" fill="#00E5FF">CODENAME : AI-MARKET-DEMAND-ANALYSIS</text>
+    <text x="612" y="82" fill="#80DEEA">PIPELINE : CRAWL → NLP → CLUSTER → REPORT</text>
+    <text x="612" y="98" fill="#E0F7FA">STATUS   : <tspan fill="#00E5FF">● OPERATIONAL</tspan>  SIG=99.95%</text>
+  </g>
+  <!-- Big title -->
+  <text x="360" y="142" font-size="40" font-weight="900" fill="#00E5FF" letter-spacing="2">AI MARKET</text>
+  <text x="360" y="182" font-size="40" font-weight="900" fill="#E0F7FA" letter-spacing="2">DEMAND ANALYSIS</text>
+  <!-- Subtitle -->
+  <text x="362" y="212" font-family="JetBrains Mono, Fira Code, Consolas, Menlo, monospace" font-size="13" fill="#80DEEA">JD NEG-COMMENTS MINING  ·  TF-IDF + K-MEANS  ·  AUTO BUSINESS OPPORTUNITY REPORT</text>
+  <!-- Bottom strip -->
+  <g font-family="JetBrains Mono, Fira Code, Consolas, Menlo, monospace" font-size="10" fill="#80DEEA" opacity="0.9">
+    <text x="30" y="254">SYS://PIPELINE.VERSION=v3.0</text>
+    <text x="260" y="254">LAYER=<tspan fill="#00E5FF">SELENIUM+NLP</tspan></text>
+    <text x="500" y="254">ANTI-FINGERPRINT=<tspan fill="#00E5FF">UNDETECTED-CHROMEDRIVER</tspan></text>
+    <text x="950" y="254" text-anchor="end">TS: 2026-09-01 [GMT+8]</text>
+  </g>
+</svg>

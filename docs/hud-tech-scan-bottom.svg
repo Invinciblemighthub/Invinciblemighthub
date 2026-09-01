@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 30" width="980" height="30" font-family="JetBrains Mono, Fira Code, Consolas, Menlo, monospace">
+  <rect x="0" y="0" width="980" height="30" fill="#050A14"/>
+  <line x1="0" y1="1" x2="980" y2="1" stroke="#00E5FF" stroke-width="0.8" opacity="0.55"/>
+  <line x1="0" y1="29" x2="980" y2="29" stroke="#00E5FF" stroke-width="0.8" opacity="0.55"/>
+  <!-- Progress rail -->
+  <rect x="20" y="13" width="940" height="4" fill="#00E5FF" opacity="0.18"/>
+  <!-- Progress head sweeping -->
+  <rect x="20" y="13" width="260" height="4" fill="#00E5FF" opacity="0.9">
+    <animate attributeName="x" values="20;700;20" dur="2.8s" repeatCount="indefinite"/>
+  </rect>
+  <text x="20" y="24" font-size="9" fill="#80DEEA">PROGRESS</text>
+  <text x="960" y="24" font-size="9" fill="#00E5FF" text-anchor="end">4 MODULES · OK=100%</text>
+</svg>

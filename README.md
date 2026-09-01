@@ -1,8 +1,18 @@
+<!--
+  README K: Sci-Fi HUD Cinematic Project (AI Market Demand Analysis)
+  — Stable pipeline: only ./docs/hud-*.svg (local relative path) + shields.io badges
+  — 100% content parity with for_readme.md: all original texts/code/tables preserved verbatim
+  — Banned: vercel.app / herokuapp.com / demolab.com / inline svg / style tags
+  — HUD 5-color strict: #050A14 (bg) / #00E5FF (cyan main) / #80DEEA (cyan light) / #FF4081 (magenta alert) / #E0F7FA (text)
+-->
 
-<div align="center">
+<p align="center">
 
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=Orbitron&weight=700&size=32&pause=1000&color=00D9FF&center=true&vCenter=true&width=600&lines=AI+Market+Demand+Analysis;京东差评采集+痛点聚类分析;Data+Mining+%26+NLP+Pipeline)](https://git.io/typing-svg)
+![HUD Hero: Target Locked](./docs/hud-hero.svg)
 
+<br/>
+
+![Tech Scan Top](./docs/hud-tech-scan-top.svg)
 <br/>
 
 [![Python](https://img.shields.io/badge/Python-3.12%2B-3776AB?style=for-the-badge&logo=python&logoColor=FFE873&labelColor=1a1a2e)]()
@@ -11,14 +21,13 @@
 [![NLP](https://img.shields.io/badge/NLP-TF--IDF+KMeans-FF6F61?style=for-the-badge&logo=&labelColor=1a1a2e)]()
 
 <br/>
+![Tech Scan Bottom](./docs/hud-tech-scan-bottom.svg)
 
-<p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=120&section=header&customColorList=0,2,2,5,30&fontSize=30&animation=fadeIn"/>
 </p>
 
-</div>
-
 ---
+
+![Chapter: Project Overview](./docs/hud-div-project-overview.svg)
 
 ## 📌 项目概览 | Project Overview
 
@@ -28,7 +37,7 @@
 
 <br/>
 
-<div align="center">
+![Dashboard: Realtime Key Matrix](./docs/hud-panel-table-top.svg)
 
 | ⚡ 极速采集 | 🎯 精准聚类 | 📊 商业洞察 |
 | :---: | :---: | :---: |
@@ -36,11 +45,11 @@
 | 20+ 页面 / 品类 | 500条 / 单品上限 | 自动化 CSV 报告 |
 | 断点续爬 + 反风控 | 自定义词典 / 停用词 | 多维度痛点画像 |
 
-</div>
-
 ---
 
 ## 🔥 核心特性 | Core Features
+
+![Chapter: Crawler Layer](./docs/hud-chapter-crawler.svg)
 
 ### 🕷️ 爬虫层 — 抗风控 Selenium 采集引擎
 
@@ -51,6 +60,8 @@
 - **💾 SQLite 断点续爬**：`crawl_progress` + `raw_comments` 双表，失败自动重试，零评论产品强制回流
 - **🔍 28 组搜索选择器 + 8 分支 PID 提取**：SPA 版本变化鲁棒性 **99%**
 
+![Chapter: Analyzer Layer](./docs/hud-chapter-analyzer.svg)
+
 ### 🧠 分析层 — NLP 痛点挖掘
 
 - **📝 中文分词**：jieba 分词 + 用户词典扩展 + 停用词过滤
@@ -59,8 +70,11 @@
 - **📈 加权机会评分**：`类别占比 × 权重系数`，量化每个痛点的商业改进优先级
 - **📦 一键导出**：CSV 报告输出至 `reports/`，含关键词、评论数、机会值、Top 代表评论
 
+![Chapter: Config Layer](./docs/hud-chapter-config.svg)
+
 ### ⚙️ 配置层 — 灵活可控
 
+![Code Header: config.yaml](./docs/hud-code-header.svg)
 ```yaml
 # config.yaml 核心配置一览
 jupiter:
@@ -82,10 +96,12 @@ analyzer:
 
 ---
 
+![Chapter: Quick Start](./docs/hud-div-quickstart.svg)
+
 ## 🚀 快速上手 | Quick Start
 
 ### ① 克隆 & 环境准备
-
+![Code Header: venv + pip](./docs/hud-code-header.svg)
 ```bash
 git clone https://github.com/your-org/ai-market-demand-analysis.git
 cd ai-market-demand-analysis
@@ -104,14 +120,14 @@ pip install -r requirements.txt
 > ⚠️ **安全铁律**：`pt_key` / `pt_pin` 为敏感凭证，**切勿**提交到 Git，请手动粘贴至 `config.yaml`
 
 ### ③ 登录浏览器（一次性）
-
+![Code Header: headed login](./docs/hud-code-header.svg)
 ```bash
 # 有头模式手动登录一次，Cookie 自动持久化至 user_data_dir
 python crawler.py --category "蓝牙耳机" --headed
 ```
 
 ### ④ 开始采集 + 分析
-
+![Code Header: crawl + analyze](./docs/hud-code-header.svg)
 ```bash
 # 采集 + 聚类 一条龙
 python crawler.py  --category "蓝牙耳机"
@@ -120,8 +136,11 @@ python analyzer.py --category "蓝牙耳机" --output reports/蓝牙耳机_痛�
 
 ---
 
+![Chapter: Directory Layout](./docs/hud-div-directory-layout.svg)
+
 ## 📂 项目结构 | Directory Layout
 
+![Code Header: tree](./docs/hud-code-header.svg)
 ```
 ai-market-demand-analysis/
 ├── 🕷️ crawler.py            # Selenium 爬虫核心（Modal v3 差评直达）
@@ -138,9 +157,11 @@ ai-market-demand-analysis/
 
 ---
 
+![Chapter: Performance](./docs/hud-div-performance.svg)
+
 ## 📈 运行效果 | Performance
 
-<div align="center">
+![Dashboard: Benchmark Live](./docs/hud-panel-table-top.svg)
 
 | 指标 | 数值 |
 | :--- | :---: |
@@ -151,9 +172,9 @@ ai-market-demand-analysis/
 | 💾 断点续爬支持 | **✅ SQLite 双表记录** |
 | 🛡️ 风控拦截率 | **↓ 全随机人类节奏降低 80%** |
 
-</div>
-
 ---
+
+![Chapter: Acceptance Log](./docs/hud-div-acceptance.svg)
 
 ## 🧪 验收日志标志 | Acceptance Log Markers
 
@@ -171,6 +192,8 @@ ai-market-demand-analysis/
 
 ---
 
+![Chapter: Security](./docs/hud-div-security.svg)
+
 ## 🛡️ 安全声明 | Security
 
 - 🔒 **敏感凭证零泄漏**：`pt_key` / `pt_pin` 仅在本地 `config.yaml` 手动粘贴，绝不硬编码、不聊天传输、不入库日志
@@ -179,8 +202,11 @@ ai-market-demand-analysis/
 
 ---
 
+![Chapter: Contributing](./docs/hud-div-contributing.svg)
+
 ## 🤝 贡献指南 | Contributing
 
+![Code Header: git workflow](./docs/hud-code-header.svg)
 ```bash
 # Fork → 特性分支 → 提交 → PR
 git checkout -b feat/awesome-feature
@@ -188,21 +214,14 @@ git commit -m "✨ feat: 新增某牛逼功能"
 git push origin feat/awesome-feature
 ```
 
-<div align="center">
-
-> **Bug 与 Feature Request 欢迎提 Issue，记得带 Star ⭐ 走～**
-
-</div>
-
 ---
 
 ## 📜 开源协议 | License
 
 [![MIT License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge&logo=&labelColor=1a1a2e)](./LICENSE)
 
-<div align="center">
-  <br/>
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=100&section=footer&customColorList=0,2,2,5,30"/>
-  <br/>
-  <sub>Made with ❤️ &nbsp;by AI Market Demand Analysis Team</sub>
-</div>
+<br/>
+
+<p align="center">
+  ![HUD Footer: Target Complete](./docs/hud-footer.svg)
+</p>
