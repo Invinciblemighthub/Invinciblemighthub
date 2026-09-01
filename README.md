@@ -21,7 +21,7 @@
 [![NLP](https://img.shields.io/badge/NLP-TF--IDF+KMeans-FF6F61?style=for-the-badge&logo=&labelColor=1a1a2e)]()
 
 <br/>
-![Tech Scan Bottom](./docs/hud-tech-scan-bottom.svg)
+
 
 </p>
 
