@@ -1,139 +1,182 @@
 
 <div align="center">
 
-<!-- ===== 游戏像素 / 卡通复古主题 ===== -->
+<!-- ===== 3D 立体 / 光影大片主题 ===== -->
 <style>
-  @keyframes pixel-bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
-  @keyframes rainbow-text {
-    0%  { color:#ff4d6d; }
-    20% { color:#ffb703; }
-    40% { color:#38b000; }
-    60% { color:#00b4d8; }
-    80% { color:#8338ec; }
-    100%{ color:#ff4d6d; }
+  @keyframes float-soft  { 0%,100%{transform:translateY(0) rotateX(0)} 50%{transform:translateY(-12px) rotateX(2deg)} }
+  @keyframes light-sweep { 0%{transform:translateX(-120%) skewX(-20deg)} 100%{transform:translateX(220%) skewX(-20deg)} }
+  @keyframes spin-slow   { 0%{transform:rotateY(0)} 100%{transform:rotateY(360deg)} }
+  @keyframes depth-shadow{
+    0%,100%{box-shadow:0 30px 80px rgba(15,23,42,.35),0 8px 20px rgba(15,23,42,.25)}
+    50%    {box-shadow:0 50px 120px rgba(59,130,246,.35),0 12px 28px rgba(15,23,42,.3)}
   }
-  @keyframes shake-slow  { 0%,100%{transform:translate(0,0) rotate(0)} 25%{transform:translate(-1px,1px) rotate(-.6deg)} 75%{transform:translate(1px,-1px) rotate(.6deg)} }
-  .pixel-font{font-family:"Press Start 2P","VT323","Courier New",monospace;image-rendering:pixelated;letter-spacing:1px;}
-  .pixel-border{
-    border-style:solid;border-width:4px;border-color:#1d3557;
+  .hero-3d{
+    position:relative;perspective:1400px;border-radius:32px;overflow:hidden;
+    background:
+      radial-gradient(1200px 600px at 15% 0%, #1e3a8a 0%, transparent 60%),
+      radial-gradient(900px 600px at 90% 20%, #be185d 0%, transparent 55%),
+      radial-gradient(900px 800px at 50% 120%, #0ea5e9 0%, transparent 60%),
+      linear-gradient(160deg,#020617 0%, #0f172a 45%, #1e1b4b 100%);
+    border:1px solid rgba(148,163,184,.18);
+    animation:depth-shadow 6s ease-in-out infinite;
+  }
+  .card-3d{
+    background:linear-gradient(160deg,#ffffff 0%,#f1f5f9 100%);
+    border-radius:22px;border:1px solid rgba(15,23,42,.06);
     box-shadow:
-      0 -4px 0 #1d3557, 0 4px 0 #1d3557, -4px 0 0 #1d3557, 4px 0 0 #1d3557,
-      0 0 0 8px #fff, 0 0 0 12px #1d3557, 8px 8px 0 8px rgba(29,53,87,.35);
-    border-radius:0;
-    image-rendering:pixelated;
+      0 1px 0 rgba(255,255,255,.8) inset,
+      0 18px 40px -12px rgba(15,23,42,.22),
+      0 2px 8px rgba(15,23,42,.08);
+    transition:transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s;
   }
-  .pixel-box{
-    background:#fff;
-    border:4px solid #1d3557;
-    box-shadow:6px 6px 0 #1d3557;
-    padding:14px 18px;
-    image-rendering:pixelated;
+  .card-3d:hover{
+    transform:translateY(-6px) rotateX(2deg);
+    box-shadow:
+      0 1px 0 rgba(255,255,255,.8) inset,
+      0 40px 70px -20px rgba(30,58,138,.35),
+      0 6px 16px rgba(15,23,42,.15);
   }
-  .pixel-btn{
-    display:inline-block;padding:10px 18px;border:4px solid #1d3557;background:#ffd166;
-    color:#1d3557;font-weight:900;box-shadow:4px 4px 0 #1d3557;
-    transition:transform .1s;
+  .shiny::before{
+    content:"";position:absolute;inset:0;pointer-events:none;z-index:4;overflow:hidden;
+    background:linear-gradient(115deg, transparent 30%, rgba(255,255,255,.35) 50%, transparent 70%);
+    animation:light-sweep 6.5s ease-in-out infinite;
+    mix-blend-mode:screen;
   }
-  .pixel-btn:hover{ transform:translate(-2px,-2px); box-shadow:6px 6px 0 #1d3557; }
-  .pixel-btn:active{ transform:translate(4px,4px); box-shadow:0 0 0 #1d3557; }
-  .pixel-bubble{
-    background:#fff;border:4px solid #1d3557;border-radius:20px;padding:14px 20px;position:relative;
-    box-shadow:5px 5px 0 rgba(29,53,87,.2);
+  .neon-chip{
+    display:inline-block;padding:8px 18px;border-radius:9999px;font-weight:700;
+    background:rgba(255,255,255,.08);color:#e0f2fe;
+    border:1px solid rgba(224,242,254,.25);
+    box-shadow:0 0 0 1px rgba(56,189,248,.2), 0 10px 30px rgba(14,165,233,.25) inset;
   }
-  .pixel-bubble::after{
-    content:"";position:absolute;bottom:-18px;left:40px;width:0;height:0;
-    border:10px solid transparent;border-top-color:#1d3557;
-  }
-  .pixel-bubble::before{
-    content:"";position:absolute;bottom:-11px;left:43px;width:0;height:0;
-    border:8px solid transparent;border-top-color:#fff;z-index:2;
+  .title-grad{
+    background:linear-gradient(135deg,#f8fafc 0%,#7dd3fc 30%,#c4b5fd 60%,#f9a8d4 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    text-shadow:0 10px 40px rgba(125,211,252,.28);
   }
 </style>
 
-<!-- ===== HERO：像素街机卡带 ===== -->
-<div class="pixel-border" style="padding:40px 24px 30px 24px;position:relative;background:
-      linear-gradient(180deg,#fff3b0 0%,#ffd166 35%,#ef476f 70%,#8338ec 100%);">
+<!-- ===== HERO：3D 立体舞台 + 光扫 + 漂浮手机/3D Logo ===== -->
+<div class="hero-3d shiny" style="padding:60px 30px 70px 30px;">
 
-  <!-- 像素星空 -->
-  <svg width="100%" height="180" viewBox="0 0 700 180" preserveAspectRatio="none" style="position:absolute;top:0;left:0;">
-    <g fill="#fff">
-      <rect x="30"  y="20"  width="4" height="4"/>
-      <rect x="90"  y="60"  width="3" height="3"/>
-      <rect x="160" y="15"  width="5" height="5"/>
-      <rect x="220" y="70"  width="3" height="3"/>
-      <rect x="290" y="30"  width="4" height="4"/>
-      <rect x="360" y="100" width="3" height="3"/>
-      <rect x="430" y="45"  width="5" height="5"/>
-      <rect x="500" y="80"  width="3" height="3"/>
-      <rect x="560" y="25"  width="4" height="4"/>
-      <rect x="630" y="65"  width="3" height="3"/>
+  <!-- 背景网格（透视地板） -->
+  <svg width="100%" height="380" viewBox="0 0 800 380" preserveAspectRatio="none"
+       style="position:absolute;bottom:0;left:0;opacity:.25;z-index:1;">
+    <defs>
+      <linearGradient id="floor" x1="0" x2="0" y1="1" y2="0">
+        <stop offset="0" stop-color="#38bdf8" stop-opacity="0"/>
+        <stop offset="1" stop-color="#38bdf8" stop-opacity=".9"/>
+      </linearGradient>
+    </defs>
+    <!-- 横线（透视线） -->
+    <g stroke="url(#floor)" stroke-width="1">
+      <line x1="0"   y1="380" x2="800" y2="380"/>
+      <line x1="40"  y1="340" x2="760" y2="340"/>
+      <line x1="110" y1="300" x2="690" y2="300"/>
+      <line x1="180" y1="260" x2="620" y2="260"/>
+      <line x1="250" y1="228" x2="550" y2="228"/>
+      <line x1="310" y1="200" x2="490" y2="200"/>
+      <line x1="360" y1="176" x2="440" y2="176"/>
     </g>
-    <!-- 像素月亮 -->
-    <g transform="translate(610,40)">
-      <rect x="0"  y="8"  width="28" height="4" fill="#ffe066"/>
-      <rect x="-4" y="12" width="36" height="16" fill="#ffe066"/>
-      <rect x="0"  y="28" width="28" height="4" fill="#ffe066"/>
-      <rect x="6"  y="16" width="4"  height="4" fill="#ffb703"/>
-      <rect x="18" y="22" width="4"  height="4" fill="#ffb703"/>
+    <!-- 纵线（汇聚到消失点） -->
+    <g stroke="url(#floor)" stroke-width="1">
+      <line x1="0"   y1="380" x2="400" y2="160"/>
+      <line x1="100" y1="380" x2="400" y2="160"/>
+      <line x1="200" y1="380" x2="400" y2="160"/>
+      <line x1="300" y1="380" x2="400" y2="160"/>
+      <line x1="400" y1="380" x2="400" y2="160"/>
+      <line x1="500" y1="380" x2="400" y2="160"/>
+      <line x1="600" y1="380" x2="400" y2="160"/>
+      <line x1="700" y1="380" x2="400" y2="160"/>
+      <line x1="800" y1="380" x2="400" y2="160"/>
     </g>
   </svg>
 
-  <!-- 像素标题：AI MARKET 游戏机 -->
-  <div style="position:relative;">
-    <h1 class="pixel-font" style="font-size:30px;line-height:1.4;margin:0;color:#fff;
-        text-shadow:
-          4px 0 #1d3557, -4px 0 #1d3557, 0 4px #1d3557, 0 -4px #1d3557,
-          4px 4px #ef476f, -4px -4px #8338ec, 4px -4px #06d6a0, -4px 4px #ffd166;">
-      ╔══ AI · MARKET · DEMAND ══╗<br>
-      ╠═══ 8-BIT PAIN POINT ════╣<br>
-      ╚══ JD CRAWLER × NLP ═══╝
+  <!-- 悬浮 3D Logo 立方体 -->
+  <div style="position:relative;z-index:2;display:flex;justify-content:center;">
+    <svg width="180" height="180" viewBox="0 0 180 180" style="animation:float-soft 5s ease-in-out infinite;filter:drop-shadow(0 20px 40px rgba(56,189,248,.45));">
+      <!-- 3D 等轴立方体 -->
+      <!-- 顶面 -->
+      <polygon points="90,20 150,55 90,90 30,55"
+               fill="url(#top)" stroke="#fff" stroke-width="1.5"/>
+      <!-- 左面 -->
+      <polygon points="30,55 90,90 90,160 30,125"
+               fill="url(#left)" stroke="#fff" stroke-width="1.5"/>
+      <!-- 右面 -->
+      <polygon points="150,55 90,90 90,160 150,125"
+               fill="url(#right)" stroke="#fff" stroke-width="1.5"/>
+      <defs>
+        <linearGradient id="top" x1="0" x2="1" y1="0" y2="1">
+          <stop offset="0" stop-color="#e0f2fe"/><stop offset="1" stop-color="#38bdf8"/>
+        </linearGradient>
+        <linearGradient id="left" x1="0" x2="1" y1="0" y2="1">
+          <stop offset="0" stop-color="#6366f1"/><stop offset="1" stop-color="#312e81"/>
+        </linearGradient>
+        <linearGradient id="right" x1="0" x2="1" y1="0" y2="1">
+          <stop offset="0" stop-color="#ec4899"/><stop offset="1" stop-color="#831843"/>
+        </linearGradient>
+      </defs>
+      <!-- 顶部刻字 AI -->
+      <text x="90" y="68" text-anchor="middle" font-family="Orbitron,Arial" font-weight="900"
+            font-size="22" fill="#0c4a6e" stroke="#fff" stroke-width=".4">AI</text>
+      <!-- 侧面小图标 -->
+      <text x="60"  y="120" text-anchor="middle" font-size="20">🕷️</text>
+      <text x="120" y="120" text-anchor="middle" font-size="20">🧠</text>
+    </svg>
+  </div>
+
+  <!-- 标题组 -->
+  <div style="position:relative;z-index:2;margin-top:10px;">
+    <span class="neon-chip">◆ BLOCKBUSTER EDITION · v3.0 · CINEMATIC</span>
+    <h1 class="title-grad" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Orbitron,sans-serif;
+         font-size:52px;font-weight:900;letter-spacing:-1.2px;margin:14px 0 6px 0;line-height:1.1;">
+      AI Market Demand<br/>Cinematic Intelligence
     </h1>
+    <p style="color:#cbd5e1;font-size:17px;font-weight:500;margin:0;">
+      京东差评采集 · 痛点聚类分析 · 产品智能的高光时刻
+    </p>
 
-    <div class="pixel-bubble pixel-font" style="margin:20px auto 0 auto;max-width:520px;color:#1d3557;font-size:12px;line-height:1.6;">
-      PRESS [ START ] TO COLLECT 2.4k BAD REVIEWS<br>
-      &amp; UNLOCK ✨ PAIN-CLUSTER SECRETS ✨ !!
-    </div>
-    <br/><br/>
-
-    <img src="https://readme-typing-svg.demolab.com?font=Press+Start+2P&size=16&duration=2800&pause=700&color=FFFFFF&center=true&vCenter=true&width=680&lines=%3E+INSERT+COIN...+OK;%3E+LOADING+MODAL+v3+ENGINE...;%3E+%24+python+crawler.py+--category+BT_Earphone;%3E+MISSION+START+!!+GO+GO+GO"
-         style="margin-top:6px;filter:drop-shadow(3px 3px 0 #1d3557);animation:pixel-bounce 2.8s ease-in-out infinite;"/>
+    <img src="https://readme-typing-svg.demolab.com?font=Inter&weight=700&size=19&pause=1200&color=7DD3FC&center=true&vCenter=true&width=780&lines=Powered+by+Selenium+Modal+v3+%C2%B7+Anti-Bot+Engine;TF-IDF+%2B+K-Means+%C2%B7+Auto+Elbow+k%E2%88%88%5B2%2C15%5D;One-Click+Business+Intelligence+%E2%86%92+CSV+Report"
+         style="margin-top:16px;filter:drop-shadow(0 6px 20px rgba(56,189,248,.45));"/>
   </div>
 </div>
 
 <br/>
 
-<!-- ===== 像素生命条 / 经验条 Badges ===== -->
-<p class="pixel-font" style="font-size:12px;">
-  <span class="pixel-btn" style="background:#ef476f;color:#fff;">🐍 Python 3.12+</span>
+<!-- ===== 3D 立体徽章 ===== -->
+<p>
+  <img src="https://img.shields.io/badge/Python-3.12%2B-0EA5E9?style=for-the-badge&logo=python&logoColor=FDE68A&labelColor=020617&colorA=020617"
+       style="border-radius:12px;box-shadow:0 14px 30px -8px rgba(14,165,233,.5);" />
   &nbsp;
-  <span class="pixel-btn" style="background:#06d6a0;color:#fff;">🕷️ Selenium UC</span>
+  <img src="https://img.shields.io/badge/Selenium-UC_ARMOR-EC4899?style=for-the-badge&logo=selenium&logoColor=white&labelColor=020617"
+       style="border-radius:12px;box-shadow:0 14px 30px -8px rgba(236,72,153,.55);" />
   &nbsp;
-  <span class="pixel-btn" style="background:#118ab2;color:#fff;">🗄️ SQLite3</span>
+  <img src="https://img.shields.io/badge/SQLite-3D_Cube-6366F1?style=for-the-badge&logo=sqlite&logoColor=white&labelColor=020617"
+       style="border-radius:12px;box-shadow:0 14px 30px -8px rgba(99,102,241,.55);" />
   &nbsp;
-  <span class="pixel-btn" style="background:#8338ec;color:#fff;">🧠 TF-IDF×KMeans</span>
+  <img src="https://img.shields.io/badge/NLP-KMeans_TFIDF-F59E0B?style=for-the-badge&logo=scikitlearn&logoColor=white&labelColor=020617"
+       style="border-radius:12px;box-shadow:0 14px 30px -8px rgba(245,158,11,.55);" />
 </p>
 <p>
-  <img src="https://img.shields.io/badge/HP-2400_%E8%AF%84%E8%AE%BA%2F%E5%93%81%E7%B1%BB-FULL-ef476f?style=for-the-badge&labelColor=1d3557&color=ef476f&logo=&logoColor=fff"/>
+  <img src="https://img.shields.io/github/last-commit/your-org/ai-market-demand-analysis?style=for-the-badge&label=Last%20Scene&labelColor=020617&color=38BDF8"/>
   &nbsp;
-  <img src="https://img.shields.io/badge/EXP-AUTO%20K--Means-ffd166?style=for-the-badge&labelColor=1d3557&color=ffd166"/>
+  <img src="https://img.shields.io/badge/Reviewers-5%E2%98%85-FB7185?style=for-the-badge&logoColor=fff&labelColor=020617"/>
   &nbsp;
-  <img src="https://img.shields.io/badge/QUEST-%E6%8A%93%E5%8F%96%2B%E8%81%9A%E7%B1%BB%E5%AE%8C%E6%88%90-06d6a0?style=for-the-badge&labelColor=1d3557&color=06d6a0"/>
+  <img src="https://img.shields.io/badge/Cinematic_Ready-%E2%9C%94%EF%B8%8F-10B981?style=for-the-badge&logoColor=fff&labelColor=020617"/>
 </p>
 
 </div>
 
 ---
 
-## 🎮 STAGE 1 · TITLE SCREEN · 任务简介 📜
+## 🎬 影片大纲 · Overview
 
-<div class="pixel-box" style="background:#fef9ef;">
+<div class="card-3d" style="padding:20px 26px;">
 
-> **🎯 主线任务（Main Quest）**
+> **🎬 我们在拍什么样的大片？**
 >
-> 你是一位 8-bit 产品勇者 🧙，需要从 JD.COM 的电商副本中刷出海量**差评怪物**，
-> 然后用 NLP 魔法炉把它们炼成**痛点水晶**，最终制作出老板最爱的《商业决策报告书》。
->
-> 你的装备：**Selenium 蜘蛛弓 + Modal v3 差评传送门 + TF-IDF 法杖 + K-Means 自动锁敌挂**。
+> 一套**面向电商市场的全自动 AI 需求分析系统**——以 **Selenium + undetected-chromedriver**
+> 构建出抗风控差评采集剧组，再交给 **TF-IDF + K-Means + 肘部法则** 的剪辑工作室，
+> 从海量原始差评素材中精炼出**用户痛点精华片段**，最终交付**高价值商业决策预告片**。
 
 </div>
 
@@ -141,63 +184,63 @@
 
 <div align="center">
 
-| 🕹️ 高速采集副本 | 🎯 智能锁敌系统 | 💎 奖励报告书 |
+| 🎬 高速摄制片场 | 🎯 智能剪辑工作室 | 🏆 奥斯卡级报告 |
 | :---: | :---: | :---: |
-| Modal v3 差评传送 | 肘部法则自动 k 值 | 加权机会评分模型 |
-| 20 房间 / 地图 · 500 怪 / 房间 | Jieba 技能 + 词典 Buff | 一键爆出 CSV |
-| SQLite 存档 + 反复活抖动 | 自定义停用词去噪 | 多维度装备图鉴 |
+| Modal v3 差评直达机位 | 肘部法则自动 K 值运镜 | 加权机会评分模型 |
+| 20 场景 / 品类 · 500 镜头 / 单品 | Jieba + 词典扩展滤镜 | CSV 一键出片 |
+| SQLite 断点续拍 + 反风控打板 | 自定义停用词降噪 | 多维度角色画像 |
 
 </div>
 
 ---
 
-## 👾 STAGE 2 · SKILL TREE · 技能树
+## ✨ 三大主演模块
 
-### 🕷️ 职业：反风控猎人（Crawler Master）
+### 🕷️ 领衔主演 · Modal v3 反风控采集
 
-<div class="pixel-box" style="background:#ffe5ec;">
+<div class="card-3d" style="padding:6px 22px 2px 22px;">
 
-| 技能 | 描述 |
+| 镜头技术 | 规格 |
 | :--- | :--- |
-| 🎭 隐身术 Lv.5 | `undetected-chromedriver` + `user_data_dir` 持久登录，风控之眼全 MISS |
-| 🚀 差评传送 v3 | Modal 三阶段传送 · 跳过翻页直达差评 Tab · **速度 ×10** |
-| 🛡️ 驱动四层检测 | 注册表 → 常见路径 → `--version` → 目录名，免疫 `SessionNotCreatedException` |
-| 🎲 人类舞步 | 请求前 30–55s · 房间间 50–80s · 403 时 120–180s 冷却 |
-| 💾 读档复活术 | `crawl_progress` + `raw_comments` 双存档 · 失败自动重试 |
-| 🔍 八重锁敌 | 28 搜索选择器 + 8 分支 PID 提取 · SPA 版本鲁棒 99% |
+| 🎭 隐形替身穿戴 | `undetected-chromedriver` + `user_data_dir` 登录态持久化 |
+| 🚀 长镜头直达 | Modal 三阶段运镜 · 跳过翻页直抵差评 Tab · 提速 **10×** |
+| 🛡️ 四机位定位 | 注册表 → 常见路径 → `--version` → 目录名 · 免疫驱动报错 |
+| 🎲 临场自由发挥 | 请求前 30–55s · 转场 50–80s · 403 冷却 120–180s |
+| 💾 多版本存档 | `crawl_progress` + `raw_comments` · 失败自动重拍 · 空镜强制补拍 |
+| 🔍 广角 28 焦段 | 28 搜索选择器 + 8 分支 PID · SPA 版本稳定 99% |
 
 </div>
 
-### 🧠 职业：NLP 咒术师（Analyzer Wizard）
+### 🧠 主角 · NLP 智能剪辑核
 
-<div class="pixel-box" style="background:#e0fbfc;">
+<div class="card-3d" style="padding:6px 22px 2px 22px;">
 
-| 技能 | 描述 |
+| 剪辑工艺 | 规格 |
 | :--- | :--- |
-| 📝 真言分词 | Jieba 咒文 + 用户词典扩展 + 停用词驱散 |
-| 🔢 向量魔法阵 | TF-IDF 词频-逆文档频率矩阵 |
-| 🎯 肘部自动锁敌 | K-Means + 肘部法则 k ∈ [2,15]，无需手动指定 |
-| 📈 加权爆破术 | `占比 × 权重系数` → 算出最值得打的痛点 BOSS |
-| 📦 爆宝箱 | 自动掉落 CSV 奖励，含关键词 / 数量 / 机会值 / Top 代表评论 |
+| 📝 台词分词 | Jieba 分词 + 用户词典 + 停用词清洗 |
+| 🔢 色彩分级 | TF-IDF 词频-逆文档频率矩阵 |
+| 🎯 关键帧锁定 | K-Means + 肘部法则 k ∈ [2, 15] · 全自动选 K |
+| 📈 节奏感加权 | `类别占比 × 权重系数` · 生成高光片段排序 |
+| 📦 成片交付 | CSV 导出 · 关键词 / 镜头数 / 评分 / Top 代表台词 |
 
 </div>
 
-### ⚙️ 职业：装备锻造师（Config Artisan）
+### ⚙️ 监制剧本 · 全局配置
 
 ```yaml
-# ===== PIXEL FORGE CONFIG =====
+# ===== AI-MARKET · CINEMATIC SCRIPT v3 =====
 jupiter:
-  pt_key:   "manual_inject_only"   # 🔑 不要贴到 GitHub！自己注入！
-  pt_pin:   "manual_inject_only"
+  pt_key:   "manual_only_never_leak"    # ⚠ 仅本地手动粘贴
+  pt_pin:   "manual_only_never_leak"
 
 crawler:
-  max_search_pages:         20      # 探索房间上限
-  max_comments_per_product: 500     # 每房怪数上限
-  max_scroll_per_product:   50      # 每房滚动次数
+  max_search_pages:         20           # 场景上限
+  max_comments_per_product: 500          # 单场景差评镜头上限
+  max_scroll_per_product:   50           # 滚动次数上限
 
 analyzer:
-  k_range:      [2, 15]             # 锁敌搜索范围
-  weight_adjust:                    # 爆破术权重系数
+  k_range:      [2, 15]                  # 肘部法则搜索范围
+  weight_adjust:                          # 后期评分权重
     quality:    1.5
     service:    1.2
     logistics:  1.0
@@ -205,76 +248,74 @@ analyzer:
 
 ---
 
-## 🧭 STAGE 3 · DUNGEON MAP · 副本流程图
+## 🎞️ 放映机流程 · Pipeline
 
 ```mermaid
 flowchart LR
-    A["🕷️ START · MODAL v3 传送"] --> B{{"💾 SAVE POINT · SQLite"}}
-    B --> C["🧹 洗词炼句 · JIEBA"]
-    C --> D["📊 向量炼阵 · TF-IDF"]
-    D --> E["🎯 锁敌 · KMeans 肘部"]
-    E --> F["📈 加权爆破 · SCORE"]
-    F --> G["📦 REWARD · CSV 宝箱"]
+    A["🎬 MODAL v3 拍摄"] --> B[("💾 SQLite 素材库")]
+    B --> C["🧹 台词清洗"]
+    C --> D["🎨 TF-IDF 调色"]
+    D --> E["🎯 KMeans 关键帧"]
+    E --> F["📈 高光评分"]
+    F --> G["📦 CSV 成片"]
 
-    classDef pixel fill:#fef9ef,stroke:#1d3557,stroke-width:4px,color:#1d3557,font-weight:700;
-    class A,B,C,D,E,F,G pixel;
+    classDef shine fill:#0ea5e9,stroke:#0f172a,stroke-width:1.5px,color:#fff;
+    classDef gold  fill:#f59e0b,stroke:#0f172a,stroke-width:1.5px,color:#fff;
+    classDef pink  fill:#ec4899,stroke:#0f172a,stroke-width:1.5px,color:#fff;
+    class A,C,D shine; class B,E pink; class F,G gold;
 ```
 
 ---
 
-## 🕹️ STAGE 4 · CONTROLLER · 操作说明
+## 🎟️ 购票入场 · Quick Start
 
-### 🕹️ ① 买游戏 + 插手柄（克隆 + 虚拟环境）
+### ① 走进电影院（克隆 + 虚拟环境）
 
-<div class="pixel-box" style="background:#fff3b0;">
+<div class="card-3d" style="padding:4px 20px;">
 
 ```bash
-# 卡带插入！
 git clone https://github.com/your-org/ai-market-demand-analysis.git
 cd ai-market-demand-analysis
 
-# 插上手柄（虚拟环境）
 python -m venv .venv
-# Windows 玩家:
+# Windows
 .venv\Scripts\activate
-# macOS / Linux 玩家:
+# macOS / Linux
 # source .venv/bin/activate
 
-# 读取 ROMs
 pip install -r requirements.txt
 ```
 
 </div>
 
-### 🔑 ② 输入密码（手动注入凭证）
+### ② 出示电影票（配置凭证）
 
-<div class="pixel-box" style="background:#ffd6a5;">
+<div class="card-3d" style="padding:12px 22px;">
 
-> ⚠️ **隐藏提示 👾**：`pt_key` 和 `pt_pin` 是通关密码，**绝对不要**上传到 GitHub 哦～
-> 请打开 `config.yaml`，把它们手动填进去就好啦！
+> 🎟️ **检票须知**：`pt_key / pt_pin` 是你的 VIP 电影票，请**手动**粘贴到 `config.yaml`，**绝对不要**上传到公共 Git 仓库哦～
 
 </div>
 
-### 🎮 ③ 首次进入游戏（有头模式 · 存档登录态）
+### ③ 点映场 · 首次开机（有头模式）
 
-<div class="pixel-box" style="background:#caffbf;">
+<div class="card-3d" style="padding:4px 20px;">
 
 ```bash
-# 第一关新手教程：打开画面，登录 JD，然后 Cookie 就存到 user_data_dir 啦！
+# 有头模式手动登录一次 → 登录态持久化到 user_data_dir
 python crawler.py --category "蓝牙耳机" --headed
 ```
 
 </div>
 
-### ⚔️ ④ 开刷 + 掉装备（采集 + 聚类）
+### ④ 全球公映 · 采集 + 报告
 
-<div class="pixel-box" style="background:#a0c4ff;">
+<div class="card-3d" style="padding:4px 20px;">
 
 ```bash
-# 进副本开刷
-python crawler.py  --category "蓝牙耳机"
+# 正片开拍：采集差评
+python crawler.py --category "蓝牙耳机"
 
-# 炼成水晶 + 爆奖励 CSV
+# 后期剪辑：生成 CSV 报告
 python analyzer.py --category "蓝牙耳机" --output reports/蓝牙耳机_痛点报告.csv
 ```
 
@@ -282,100 +323,102 @@ python analyzer.py --category "蓝牙耳机" --output reports/蓝牙耳机_痛�
 
 ---
 
-## 🗺️ STAGE 5 · WORLD MAP · 文件地图
+## 🎬 片场结构 · Blueprint
 
 ```text
 ai-market-demand-analysis/
-├── 🕹️ crawler.py          👾 反风控猎人主程序
-├── 🧙 analyzer.py         🧠 NLP 咒术师主程序
-├── ⚒️ config.yaml         🔨 锻造台配置
-├── 📋 requirements.txt    📦 ROM 清单（含 setuptools≥68）
-├── 🗃️ data/               💾 存档目录
-│   └── jupiter.db         🎮 SAVE 01 · 主存档
-├── 📊 reports/            🏆 战利品宝箱
-│   └── 蓝牙耳机_痛点.csv  💎 首通奖励
-├── 🔧 user_data_dir/      🎫 游戏账号（登录态）
-└── 📜 logs/               📸 录像 + 证据
+├── 🎬 crawler.py              # 主摄影机 · Modal v3 差评直达
+├── 🧠 analyzer.py             # 剪辑工作室 · NLP 聚类核
+├── 📜 config.yaml             # 监制剧本 · 全局配置
+├── 📋 requirements.txt        # 剧组名单 (setuptools≥68)
+├── 🗃️ data/                   # 片库
+│   └── jupiter.db             # SQLite 主片库
+├── 📊 reports/                # 成片输出
+│   └── 蓝牙耳机_痛点报告.csv  # 代表作
+├── 🔧 user_data_dir/          # 化妆间（登录态持久化）
+└── 🎞️ logs/                   # 花絮 + 证据胶片
 ```
 
 ---
 
-## 📊 STAGE 6 · SCOREBOARD · 战绩表
+## 🏆 票房成绩 · Performance
 
 <div align="center">
 
-| 成就 ACHIEVEMENT | 战绩 SCORE | 解锁 UNLOCK |
-| :--- | :---: | :--- |
-| 🛒 单地图探索房间 | **20** | 🏅 探索家 |
-| 💬 单房间怪物上限 | **500 / 50 滚** | 🏅 狩猎王 |
-| ⚡ 差评传送成功率 | **Modal v3 · 99%** | 🏅 传送大师 |
-| 🧩 自动锁敌范围 | **肘部法则 k ∈ [2,15]** | 🏅 神射手 |
-| 💾 读档复活 | ✅ 双存档 | 🏅 永不言弃 |
-| 🛡️ 反封抗性 | ↓ 80% | 🏅 隐形斗篷 |
+| 票房指标 | 数据 |
+| :--- | :---: |
+| 🛒 单品类片场覆盖 | **20 场** |
+| 💬 单品差评镜头 | **500 镜 / 50 滚** |
+| ⚡ 差评直达率 | **Modal v3 99%** |
+| 🧩 关键帧 K 自动识别 | **k ∈ [2,15] · 肘部法则** |
+| 💾 续拍支持 | ✅ SQLite 双场记 |
+| 🛡️ 排片稳定性 | 风控拦截 ↓ **80%** |
 
 </div>
 
 ---
 
-## ✨ STAGE 7 · SECRET TOKENS · 验收暗号
+## ✅ 打板暗号 · Acceptance Logs
 
-通关时，控制台出现以下**暗号**即代表对应关卡通关：
+控制台出现以下**打板声**，代表对应镜头 OK：
 
-| 关卡 | 暗号（grep 关键词） |
+| 阶段 | 打板暗号 |
 | :--- | :--- |
-| 🏠 存档回流 | `[遗留重置] xx items reset` |
-| 🚪 传送门入口 | `[赞不绝口入口 ✓]` |
-| 🌀 传送根挂载 | `[Modal 根 ✓]` |
-| 🎯 差评区锁定 | `[差评标签 双保险 ✓]` |
-| 🌊 副本加载 | `[评价区 锚点/UI回退路径]` |
-| 📜 全文展开 | `scroll with expanded full text` |
-| 💾 存档写入 | `DB write confirmed, Y≥10 comments` |
+| 补拍遗留重置 | `[遗留重置] xx items reset` |
+| 好评率入口开机 | `[赞不绝口入口 ✓]` |
+| Modal 场记就位 | `[Modal 根 ✓]` |
+| 差评 Tab 切换 | `[差评标签 双保险 ✓]` |
+| 评价区灯光准备 | `[评价区 锚点/UI回退路径]` |
+| 滚动 + 展开全文 | `scroll with expanded full text` |
+| 素材入库确认 | `DB write confirmed, Y≥10 comments` |
 
 ---
 
-## 🛡️ STAGE 8 · SECRET CHEATS · 安全秘籍
+## 🛡️ 片场安保协议 · Security
 
-<div class="pixel-box" style="background:#ffadad;">
+<div class="card-3d" style="padding:6px 22px;">
 
-- 🔒 **秘籍 01 · 凭证保密术**：`pt_key / pt_pin` 只能手动粘贴到 YAML，绝不能：硬编码 / 发聊天 / 入库 / 写日志
-- 🚫 **秘籍 02 · 无头禁止符**：未登录启动无头模式 → 立即 GameOver，防止白玩 + 被封号
-- 🧹 **秘籍 03 · 证据分身术**：反爬假页（~3908B）和真证据（73KB+/77KB+/110KB+）用**毫秒戳**命名，永远不覆盖
+- 🔒 **安保 01**：`pt_key / pt_pin` 仅本地 YAML 注入，永不硬编码 / 外传 / 入库 / 入日志
+- 🚫 **安保 02**：未登录状态下 **Headless 模式立即停机**，防止白拍 + 误触风控封场
+- 🧹 **安保 03**：3908B 拦截素材 与 73KB+/77KB+/110KB+ 真实素材，**毫秒级时间戳**命名，永不覆盖
 
 </div>
 
 ---
 
-## 🏰 STAGE 9 · GUILD · 加入公会
+## 🎥 加入剧组 · Contributing
 
 ```bash
-# 公会贡献流程
-git checkout -b feat/new-super-move
-git commit -m "feat(modal): 新增超华丽 Modal v4 必杀技"
-git push origin feat/new-super-move
-# → 开 PR → CI 绿灯 → 会长批准 → 入族谱 ✨
+# 1. 分一个支线本
+git checkout -b feat/awesome-shot
+
+# 2. 开拍 + 杀青提交
+git commit -m "feat(camera): 增加令人惊叹的第 4 代运镜"
+
+# 3. 推到远程，等导演 review
+git push origin feat/awesome-shot
+# → Open PR → CI 绿灯 → 合入正片
 ```
 
-<div align="center" class="pixel-font" style="color:#1d3557;">
-  ✨ 如果这游戏让你大呼过瘾 → 点个 ⭐ Star 让全服知道 ✨<br>
-  🐞 发现 Bug · 💡 想要新装备？开 Issue 呼叫 GM 吧！
+<div align="center" style="color:#475569;font-weight:600;">
+  发现穿帮镜头（Bug）或想加入新镜头（Feature）？开 Issue 喊导演 🎬<br/>
+  如果这部大片有打动你，点个 ⭐ Star 当票房支持一下呀！
 </div>
 
 ---
 
-## 🏁 CREDITS · 通关字幕
+## 🎭 放映许可 · License
 
 <p align="center">
   <a href="./LICENSE">
-    <span class="pixel-btn" style="background:#b5179e;color:#fff;font-size:14px;">🎓 LICENSE · MIT</span>
+    <img src="https://img.shields.io/badge/LICENSE-MIT-0EA5E9?style=for-the-badge&logo=&labelColor=020617&logoColor=fff"
+         style="border-radius:12px;box-shadow:0 16px 36px -10px rgba(14,165,233,.55);"/>
   </a>
 </p>
 
 <div align="center">
-  <div style="font-family:Press Start 2P,monospace;font-size:14px;color:#1d3557;line-height:2;">
-    - THANKS FOR PLAYING -<br>
-    <span style="animation:rainbow-text 3s linear infinite;">
-      MADE WITH 💖 BY AI MARKET DEMAND TEAM
-    </span>
-  </div>
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=100&section=footer&customColorList=11,12,13,14,15" style="margin-top:14px;"/>
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=110&section=footer&customColorList=30,26,20,14,30"/>
+  <p style="margin-top:-6px;font-family:Orbitron,-apple-system,sans-serif;font-weight:800;color:#6366f1;letter-spacing:2px;">
+    — PRODUCED BY THE AI MARKET DEMAND BLOCKBUSTER TEAM —
+  </p>
 </div>
