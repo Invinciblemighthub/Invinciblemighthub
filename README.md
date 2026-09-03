@@ -223,5 +223,5 @@ git push origin feat/awesome-feature
 <br/>
 
 <p align="center">
-  ![HUD Footer: Target Complete](./docs/hud-footer.svg)
+ 
 </p>
